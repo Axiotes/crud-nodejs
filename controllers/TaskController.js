@@ -13,8 +13,8 @@ module.exports = class TaskController {
     res.send("Task adicionada ao banco de dados");
   }
 
-  static showTasks(req, res) {
-    const tasks = Task.findAll();
+  static async showTasks(req, res) {
+    const tasks = await Task.findAll({ raw: true });
 
     res.send(tasks);
   }
