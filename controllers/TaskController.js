@@ -26,4 +26,18 @@ module.exports = class TaskController {
 
     res.send("Task removida");
   }
+
+  static async updateTask(req, res) {
+    const id = req.params.id;
+
+    const task = {
+      title: req.body.title,
+      description: req.body.description,
+      done: req.body.done,
+    };
+
+    await Task.update(task, { where: { id: id } });
+
+    res.send("Task atualizada");
+  }
 };
