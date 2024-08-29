@@ -18,4 +18,12 @@ module.exports = class TaskController {
 
     res.send(tasks);
   }
+
+  static async deleteTask(req, res) {
+    const id = req.params.id;
+
+    await Task.destroy({ where: { id: id } });
+
+    res.send("Task removida");
+  }
 };
