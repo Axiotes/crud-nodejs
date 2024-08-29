@@ -8,10 +8,14 @@ module.exports = class TaskController {
       done: false,
     };
 
-    await Task.save(task);
+    await Task.create(task);
+
+    res.send("Task adicionada ao banco de dados");
   }
 
   static showTasks(req, res) {
-    res.send("Mostrar tarefas");
+    const tasks = Task.findAll();
+
+    res.send(tasks);
   }
 };
